@@ -1,0 +1,372 @@
+<!--<div class="mengbanOne" ng-click="mengadd()" ng-show="mengban">-->
+
+<!--</div>-->
+
+<nav class="nakeStore_fixed_top">
+
+    <div class="nakeStore_fixed_top_logo">
+        <img src={{nakeStore_fixed_top_logoImg}} alt= {{nakeStore_fixed_top_logoImgAlt}}>
+        <span>{{nakeStore_fixed_top_Text}}</span>
+    </div>
+    <a href="" class="glyphicon glyphicon-align-justify fixed_top_huadong" ng-click="huaDong()"></a>
+    <div class="dropdown s">
+        <a href="" class="dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-bell"><span class="fixed_top_xiaoxi">{{fixed_top_xiaoxi_num}}</span></span>
+        </a>
+        <ul class="dropdown-menu u" aria-labelledby="dropdownMenu2" style="width:280px;">
+            <li style="text-align: center"><h4 >通知</h4></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#/gonggao"  style="display: flex">
+                <span style="font-size:30px;color:rgba(250,0,0,0.5);" class="glyphicon glyphicon-bell"></span>
+                <span>
+                            <p style="font-size:15px">新公告</p>
+                            <p style="font-size:10px; color:darkgray">您有<span style="color:red">{{fixed_top_xiaoxi_sum}}</span>个未读公告</p>
+                        </span>
+            </a></li>
+            <li><a href="#/shengri"  style="display: flex">
+                <span style="font-size:30px;color:rgba(250,0,0,0.5);" class="glyphicon glyphicon-bell"></span>
+                <span>
+                            <p style="font-size:15px">生日提醒</p>
+                            <p style="font-size:10px ; color:darkgray">您有<span style="color:red">{{fixed_top_xiaoxi_sum1}}</span>个未读公告</p>
+                        </span>
+            </a></li>
+            <li><a href="#/yuyue"  style="display: flex">
+                <span style="font-size:30px;color:rgba(250,0,0,0.5);" class="glyphicon glyphicon-bell"></span>
+                <span>
+                            <p style="font-size:15px">预约提醒</p>
+                            <p style="font-size:10px; color:darkgray">您有<span style="color:red">{{fixed_top_xiaoxi_sum2}}</span>   个未读公告</p>
+                        </span>
+            </a></li>
+        </ul>
+    </div>
+    <div class="dropdown ss">
+        <button style="font-size: 20px; background:rgba(0,200,100,0.1); border-radius: 50px;margin-top:-7px" class="btn btn-group dropdown-toggle xiaoren" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="" style="color:#fff;"><span class="glyphicon glyphicon-user"></span></a>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li ><a href="#/geren" style="width:100%;line-height: 40px " ng-click="geren()"><span class="glyphicon glyphicon-user"></span>个人信息</a></li>
+            <li ><a href="#/xiugai" style="width:100%;line-height: 40px " ng-click="xiugai()"><span class="glyphicon glyphicon-lock"></span>修改密码</a></li>
+            <li ><a href="denglu.html" style="width:100%;line-height: 40px " ng-click="clearS()"><span class="glyphicon glyphicon-ban-circle"></span>退出</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <div class=".nakeRoute_main_con" ng-show="wofenl">
+        <div class="nakeRoute_con" ng-controller="nakeRoute_controller">
+            <p>{{type}}</p>
+            <p>{{controlleHeader}}</p>
+            <p>{{shopModule}}</p>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="#/home">
+                                <span class="glyphicon glyphicon-home"></span><span>主页</span>
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel panel-default ">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(0)"
+                               href=".collapse2">
+                                <span class="glyphicon glyphicon-user"></span><span>会员管理</span><span class="glyphicon" ng-class="kkk(0)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse2">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/vipList">会员列表</a></li>
+                                <li><a href="#/vipLv">会员登记</a></li>
+                                <li><a href="#/vipLvSet">会员等级设置</a></li>
+                                <li><a href="#/vipbatchIn">会员批量导入</a></li>
+                                <li><a href="#/vipyewuTiaoZheng">会员业务调整</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(1)"
+                               href=".collapse3">
+                                <span class="glyphicon glyphicon-folder-close"></span><span>产品管理</span><span class="glyphicon" ng-class="kkk(1)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse3">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/chanpinList">产品列表</a></li>
+                                <li><a href="#/chanpinluru">产品录入</a></li>
+                                <li><a href="#/chanpinleibie">产品类别</a></li>
+                                <li><a href="#/piliangdaoru">批量导入</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(2)"
+                               href=".collapse4">
+                                <span class="glyphicon glyphicon-gift"></span><span>礼品管理</span><span class="glyphicon" ng-class="kkk(2)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse4">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/lipinList">礼品列表</a></li>
+                                <li><a href="#/lipinluru">礼品录入</a></li>
+                                <li><a href="#/piliangdaoruTwo">批量导入</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(3)"
+                               href=".collapse5">
+                                <span class="glyphicon glyphicon-th"></span><span>进销存管理</span><span class="glyphicon" ng-class="kkk(3)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse5">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/chanpinkucun">产品库存</a></li>
+                                <li><a href="#/chanpinjinhuo">产品进货</a></li>
+                                <li><a href="#/myDingdan">我的订单</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(4)"
+                               href=".collapse6">
+                                <span class="glyphicon glyphicon-jpy"></span><span>会员营销</span><span class="glyphicon" ng-class="kkk(4)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse6">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/youhuihuodong">优惠活动</a></li>
+                                <li><a href="#/dianziyouhuijiuan">电子优惠券</a></li>
+                                <li><a href="#/duanxinmoban">短信模板</a></li>
+                                <li><a href="#/duanxinqunnfa">短信群发</a></li>
+                                <li><a href="#/duanxinjilu">短信记录</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(5)"
+                               href=".collapse7">
+                                <span class="glyphicon glyphicon-th-list"></span><span>统计报表</span><span class="glyphicon" ng-class="kkk(5)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse7">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/xiaofeimingxi">消费明细</a></li>
+                                <li><a href="#/chongzhimingxi">充值明细</a></li>
+                                <li><a href="#/chongcimingxi">充次明细</a></li>
+                                <li><a href="#/yuebiandong">余额变动</a></li>
+                                <li><a href="#/jifenbiandong">积分变动</a></li>
+                                <li><a href="#/xiaofeifanli">消费返利</a></li>
+                                <li><a href="#/dailishangfanli">代理商返利</a></li>
+                                <li><a href="#/shangjiafanli">商家返利</a></li>
+                                <li><a href="#/dailishangedu">代理商额度</a></li>
+                                <li><a href="#/shangjiaedu">商家额度</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(6)"
+                               href=".collapse8">
+                                <span class="glyphicon glyphicon-cloud"></span><span>用户管理</span><span class="glyphicon" ng-class="kkk(6)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse8">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/gerenziliao">个人资料</a></li>
+                                <li><a href="#/yonghuliebiao">用户列表</a></li>
+                                <li><a href="#/jueseguanli">角色管理</a></li>
+                                <li><a href="#/yonghurizhi">用户日志</a></li>
+                                <li><a href="#/xiugaimima">修改密码</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(7)"
+                               href=".collapse9">
+                                <span class="glyphicon glyphicon-option-horizontal"></span><span>代理商管理</span><span class="glyphicon" ng-class="kkk(7)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse9">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/dailishangliebiao">代理商列表</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(8)"
+                               href=".collapse10">
+                                <span class="glyphicon glyphicon-barcode"></span><span>商家管理</span><span class="glyphicon" ng-class="kkk(8)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse10">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/shangjialibiao">商家列表</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(9)"
+                               href=".collapse11">
+                                <span class="glyphicon glyphicon-shopping-cart"></span><span>商城管理</span><span class="glyphicon" ng-class="kkk(9)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse11">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/cityfenzhanguanli">城市分站管理</a></li>
+                                <li><a href="#/jichushezhi">基础设置</a></li>
+                                <li><a href="#/guanggaoguanli">广告管理</a></li>
+                                <li><a href="#/shangjialiebiao">商家列表</a></li>
+                                <li><a href="#/shangchengchanpin">商城产品</a></li>
+                                <li><a href="#/shangchengdingdan">商城订单</a></li>
+                                <li><a href="#/pingjiaguanli">评价管理</a></li>
+                                <li><a href="#/helpZhongxin">帮助中心</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(10)"
+                               href=".collapse12">
+                                <span class="glyphicon glyphicon-wrench"></span><span>系统设置</span><span class="glyphicon" ng-class="kkk(10)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse12">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/zidingyiziduan">自定义字段</a></li>
+                                <li><a href="#/tuijianzhidu">推荐制度</a></li>
+                                <li><a href="#/fanlizhidu">返利制度</a></li>
+                                <li><a href="#/edutixianshenhe">额度提现审核</a></li>
+                                <li><a href="#/quanjucanshushezhi">全局参数设置</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" ng-click="add(11)"
+                               href=".collapse13">
+                                <span class="glyphicon glyphicon-phone"></span><span>微信营销</span><span class="glyphicon" ng-class="kkk(11)"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse collapse13">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="#/weixinjichushezhi">微信基础设置</a></li>
+                                <li>
+                                <li>
+                                    <div class="container">
+                                        <a href="#"    type="button" data-toggle="collapse" data-target="#demo">简单的折叠</a>
+                                        <div id="demo" class="collapse">
+                                            <ul>
+                                                <li><a href="#/fensiliebiao">粉丝列表</a></li>
+                                                <li><a href="#/huifushezhi">回复设置</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                </li>
+                                <li>
+                                <li>
+                                    <div class="container">
+                                        <a href="#"    type="button" data-toggle="collapse" data-target="#demo1">简单的折叠</a>
+                                        <div id="demo1" class="collapse">
+                                            <ul>
+                                                <li><a href="#/guanzhushihuifu">关注时回复</a></li>
+                                                <li><a href="#/wenbenhuifu">文本回复</a></li>
+                                                <li><a href="#/tupianhuifu">图文回复</a></li>
+                                                <li><a href="#/mobanxiaoxi">模板消息</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                </li>
+                                <li>
+                                    <div class="container">
+                                        <a href="#"    type="button" data-toggle="collapse" data-target="#demo2">简单的折叠</a>
+                                        <div id="demo2" class="collapse">
+                                            <ul>
+                                                <li><a href="#/shangjiatuiguangerweima">商家推广二维码</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><a href="#/zidingyicaidan">自定义菜单</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nakeView_con" ng-view></div>
+
+<script>
+        app.directive('pck',function () {
+            return{
+                templateUrl:'2.html',
+                css:'sass/index.css'
+            }
+        });
+</script>
+
+

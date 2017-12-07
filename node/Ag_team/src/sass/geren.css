@@ -1,0 +1,60 @@
+.gerenBody{
+    background: #f5f5f5;
+    height:505px;
+    overflow: scroll;
+}
+.gerenBody_top{
+    display: flex;
+    justify-content: space-between;
+    padding:20px 25px 20px 25px;
+}
+.inners ul li{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+.inners ul li input{
+  display: inline-block;
+    width:400px;
+}
+.inners ul li div{
+    display: flex;
+}
+.inners ul li div span{
+    width:50%;
+    line-height: 34px;
+    text-align: right;
+}
+/*.a-upload {*/
+    /*padding: 4px 10px;*/
+    /*height: 20px;*/
+    /*line-height: 20px;*/
+    /*position: relative;*/
+    /*cursor: pointer;*/
+    /*color: #888;*/
+    /*background: #fafafa;*/
+    /*border: 1px solid #ddd;*/
+    /*border-radius: 4px;*/
+    /*overflow: hidden;*/
+    /*!*display: inline-block;*!*/
+    /**display: inline;*/
+    /**zoom: 1;*/
+
+/*}*/
+
+/*.a-upload  input {*/
+    /*position: absolute;*/
+    /*font-size: 100px;*/
+    /*right: 0;*/
+    /*top: 0;*/
+    /*opacity: 0;*/
+    /*filter: alpha(opacity=0);*/
+    /*cursor: pointer*/
+/*}*/
+
+/*.a-upload:hover {*/
+    /*color: #444;*/
+    /*background: #eee;*/
+    /*border-color: #ccc;*/
+    /*text-decoration: none*/
+/*}*/

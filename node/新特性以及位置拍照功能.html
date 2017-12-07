@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <!--<header>头部</header>-->
+        <!--<nav>导航</nav>-->
+        <!--<div>-->
+            <!--<article>-->
+                <!--文章-->
+                <!--<section>节点</section>-->
+            <!--</article>-->
+            <!--<aside>边栏</aside>-->
+        <!--</div>-->
+        <!--<footer>尾部</footer>-->
+        <!--<form action="www.baidu.com" target="_blank">-->
+            <!--<input type="date" value = '' placeholder="请输入手机号" name="tel" pattern="1[3-8][0-9]{9}">-->
+            <!--<input type="submit">-->
+        <!--</form>-->
+        <!--<progress value="30" max="100"></progress>-->
+        <!--<meter value="3" min="0" max="10">3\10</meter>-->
+        <!--<meter value="0.6">60%</meter>-->
+        <!--<p contenteditable="true">sefewfewfw</p>-->
+
+        <!--调用摄像头-->
+
+        <video id = 'video' autoplay style = 'width: 480px; height:320px'></video><!--用来显示摄像头的视频流-->
+        <div><button id="capture">拍照</button></div><!--点击进行拍照-->
+        <canvas id = 'canvas' width="480" height="320"></canvas><!--把viedeo显示的画面进行位绘制-->
+</body>
+<script>
+
+//        function success(position) {
+//            console.log('获取位置成功',position.coords)
+//        }
+//        function error(positionError) {
+//            console.log('获取位置失败',positionError.coords,positionError.message);
+//        }
+//        let options = {
+//            enableHighAccuracy:false,
+////            timeout:30000,
+//            maximumAge:0
+//        };
+//        navigator.geolocation.getCurrentPosition(success,error,options);
+//        if (navigator.geolocation) {
+//            navigator.geolocation.getCurrentPosition(success, error, options)
+//        } else {
+//            alert('您的浏览器不支持');
+//        }
+//        let watchPath = navigator.geolocation.watchPosition(success,error,options);
+//        navigator.geolocation.clearWatch(watchPath);
+
+
+    //调用摄像头
+        let video = document.getElementById('video');<!--获取video-->
+        let canvas = document.getElementById('canvas');<!--获取canvas画布-->
+        let context = canvas.getContext('2d');<!--创建canvas-->
+<!--媒体方法的兼容处理-->
+        function getUserMedia(constraints,success,error) {
+            if(navigator.mediaDevices.getUserMedia){
+                navigator.mediaDevices.getUserMedia(constraints).then(success).catch(error)
+            }else if(navigator.getUserMedia){
+                navigator.getUserMedia(constraints).then(success).catch(error)
+            }else if(navigator.webkitGetUserMedia){
+                navigator.webkitGetUserMedia(constraints).then(success).catch(error)
+            }else if(navigator.mozGetUserMedia){
+                navigator.mozGetUserMedia(constraints).then(success).catch(error)
+            }
+        }
+<!--成功的回掉-->
+        function success(stream) {
+            let CompatibleURL = window.URL || window.webkitURL;
+            video.src=CompatibleURL.createObjectURL(stream);
+            video.play();
+        }
+<!--失败的回掉-->
+        function error (error) {
+            console.log('访问用户媒体失败',error.name,error.message);
+        }
+<!--判断是否支持媒体方法-->
+        if (navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia) {
+            getUserMedia({video:{width:480,height:320}},success,error)
+        } else {
+            alert('您的浏览器不支持');
+        }
+<!--点击拍照 进行画面绘制-->
+        document.getElementById('capture').addEventListener('click',function () {
+            context.drawImage(video,0,0,480,320);
+            console.log(context.drawImage);
+        })
+</script>
+</html>

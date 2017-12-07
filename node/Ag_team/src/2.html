@@ -1,0 +1,129 @@
+<div style="width:320%; height:300px;">
+    <div id="main" style=" height:350px"></div>
+</div>
+<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        title : {
+            text: '双数值轴折线'
+        },
+        tooltip : {
+            trigger: 'axis',
+            axisPointer:{
+                show: true,
+                type : 'cross',
+                lineStyle: {
+                    type : 'dashed',
+                    width : 1
+                }
+            },
+            formatter : function (params) {
+                return params.seriesName + ' : [ '
+                    + params.value[0] + ', '
+                    + params.value[1] + ' ]';
+            }
+        },
+        legend: {
+            data:['销售额','现金进账']
+        },
+//        toolbox: {
+//            show : true,
+//            feature : {
+//                mark : {show: true},
+//                dataZoom : {show: true},
+//                dataView : {show: true, readOnly: false},
+//                magicType : {show: true, type: ['line', 'bar']},
+//                restore : {show: true},
+//                saveAsImage : {show: true}
+//            }
+//        },
+        calculable : true,
+        xAxis : [
+            {
+                type: 'value'
+            }
+        ],
+
+        yAxis:{
+          min:0.0,
+            max:1.0,
+            interval:0.2,
+            axisLine: {
+                lineStyle: {
+                    color: '#dc143c'
+                }
+            }
+        },
+//        yAxis : [
+//            {
+//                type: 'value',
+//                axisLine: {
+//                    lineStyle: {
+//                        color: '#dc143c'
+//                    }
+//                }
+//            }
+//        ],
+        series : [
+            {
+                name:'销售额',
+                type:'line',
+                data:[
+                    [12,0.5], [15,0.77], [8,0.2], [12, 0.6], [8, 0.3], [6, 0.9], [14, 0.6], [7, 0.4], [9,0.9]
+                ],
+                markPoint : {
+                    data : [
+                        // 纵轴，默认
+                        {type : 'max', name: '最大值',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'top'}}}},
+                        {type : 'min', name: '最小值',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'bottom'}}}},
+                        // 横轴
+                        {type : 'max', name: '最大值', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'right'}}}},
+                        {type : 'min', name: '最小值', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'left'}}}}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        // 纵轴，默认
+                        {type : 'max', name: '最大值', itemStyle:{normal:{color:'#dc143c'}}},
+                        {type : 'min', name: '最小值', itemStyle:{normal:{color:'#dc143c'}}},
+                        {type : 'average', name : '平均值', itemStyle:{normal:{color:'#dc143c'}}},
+                        // 横轴
+                        {type : 'max', name: '最大值', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}},
+                        {type : 'min', name: '最小值', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}},
+                        {type : 'average', name : '平均值', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}}
+                    ]
+                }
+            },
+            {
+                name:'现金进账',
+                type:'line',
+                data:[
+                    [1, 2], [2, 3], [4, 2], [7, 5], [11, 2], [18, 3]
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option);
+    function ranM(min,max) {
+        return Math.random(max-min)+min;
+    }
+    function huaxin(mi,ma) {
+        let arr=[];
+        for (let i=0;i<option.series[0].data.length;i++){
+            let num =parseFloat(ranM(mi,ma)*15).toFixed(0);
+            let num2 =parseFloat(ranM(mi,ma)).toFixed(1);
+            let arrTwo=[num,num2];
+            arr.push(arrTwo);
+        }
+        setTimeout(function () {
+            option.series[0].data = arr;
+            console.log(arr);
+            myChart.setOption(option);
+        },1000);
+        console.log(arr);
+    }
+//    let arrO=option.series[0].data;
+//    console.log(ranM(1,15)*1)
+</script>
+

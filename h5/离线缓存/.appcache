@@ -1,0 +1,11 @@
+该离线应用描述文件列出了所有需要缓存与永不缓存的文件
+CACHE MANIFEST
+#cache之后的文件都会被缓存
+CACHE:
+main.html
+style.css
+
+
+#network 之后的文件都不会被缓存    #后面的是注释代码不会被解析
+NETWORK:
+accout/   #是相对路劲 表示accout文件下的资源都不会储存

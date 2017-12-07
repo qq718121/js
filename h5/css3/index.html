@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../../modernizr-custom.js"></script>
+</head>
+<style>
+    /*class属性包含a*/
+    div[class*=c]{
+        color:red;
+    }
+    /*class属性以a开头*/
+    div[class^=a]{
+
+    }
+    /*class属性以a结尾的*/
+    div[class$=a]{
+
+    }
+    /*父级的第一个p*/
+    p:first-of-type{
+        color:yellow;
+    }
+    /*父级的最后一个p*/
+    p:last-of-type{
+        color:green;
+    }
+    /*父级的唯一的元素*/
+    :only-child{
+    }
+    /*父级的唯一的p元素*/
+    p:only-of-type{}
+    .ab{
+        width:80px;
+        height:80px;
+        background: red;
+        padding:10px;
+        box-sizing: border-box;
+    }
+    .container.preview{
+        width:200px;
+        height:300px;
+        background: green;
+        color:red;
+    }
+    .header{
+        height:50px;
+        background: red;
+    }
+    .content{
+        /*calc函数 动态计算函数*/
+        width:calc(100% - 10vw);
+        height:calc(100% - 10px);
+        background: blue;
+    }
+
+</style>
+<body>
+<div class="aa">
+    <p class="pp">11</p>
+    <p>22</p>
+    <p>33</p>
+</div>
+<div class="ab">2</div>
+<div class="ac">3</div>
+<div class="ad">4</div>
+<div class="af">5</div>
+<div class="container">
+    <div class="header">111</div>
+    <div class="content">222</div>
+</div>
+</body>
+<script>
+    Modernizr.addTest('ie7',function () {
+
+    })
+</script>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        width: 100vw;
+        height: 667px;
+    }
+
+    .gallery {
+        width: 100vw;
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .gallery.preview .item {
+
+        display: flex;
+        margin: auto;
+        height: 667px;
+    }
+
+    .gallery.preview .item img {
+
+        max-width: 100vw;
+        max-height: 100vh;
+        width: initial;
+        height: initial;
+    }
+
+    .item {
+        flex: 1;
+    }
+
+    img {
+        width: 33vw;
+        height: 210px;
+    }
+
+    .gallery {
+
+        touch-action: none;
+    }
+</style>
+<body>
+<div class="gallery">
+    <div class="item"><img src="../images/11.jpg" alt=""></div>
+    <div class="item"><img src="../images/22.jpg" alt=""></div>
+    <div class="item"><img src="../images/33.jpg" alt=""></div>
+    <div class="item"><img src="../images/44.jpg" alt=""></div>
+    <div class="item"><img src="../images/55.jpg" alt=""></div>
+    <div class="item"><img src="../images/66.jpg" alt=""></div>
+    <div class="item"><img src="../images/33.jpg" alt=""></div>
+    <div class="item"><img src="../images/11.jpg" alt=""></div>
+    <div class="item"><img src="../images/22.jpg" alt=""></div>
+</div>
+<script>
+    let $grallery = document.querySelector('.gallery');
+    let isTouchstart = false;
+    let startOffsetX;
+    let currentTranX = 0;
+    function move(dx) {
+        $grallery.style.transform = 'translate(' + dx + 'px,0)';
+    };
+    $grallery.addEventListener('click', function (e) {
+        //监听单击事件，切换相册得css class 来进行预览模式和普通模式得切换
+        let classList = $grallery.classList,
+            css_preview = 'preview';
+        if (classList.contains(css_preview)) {
+            classList.remove(css_preview);
+            $grallery.style.width = 100 + 'vw';
+            move(0);
+            $grallery.style.touchAction = 'none';
+        } else {
+            classList.add(css_preview);
+            $grallery.style.width = 100 * 9 + 'vw';
+            $grallery.addEventListener('touchstart', function (e) {
+                if ($grallery.style.transition = 'all 1s') {
+                    $grallery.style.transition = null;
+                }
+                //触摸开始是记录当前手指得位置
+                startOffsetX = e.changedTouches[0].pageX;
+                //手指滑动得时候禁止动画
+                $grallery.classList.remove('animation');
+            });
+            $grallery.addEventListener('touchmove', function (e) {
+                isTouchstart = true;
+                //计算手指得水平移动量
+                let dx = e.changedTouches[0].pageX - startOffsetX;
+                let a = e.changedTouches[0].pageX;
+//                if (a <= 0 || a>=375) {
+//                    $grallery.removeEventListener('touchmove');
+//                }
+//                console.log(e.changedTouches[0].pageX);
+                move(currentTranX + dx);
+            });
+            $grallery.addEventListener('touchend', function (e) {
+                let width = 375;
+                $grallery.style.transition = 'all 1s';
+                if (isTouchstart) {
+                    //在哟懂得时候需要采用css3得transition是按动画
+                    $grallery.classList.add('animation');
+                    let dx = e.changedTouches[0].pageX - startOffsetX;//计算偏移量
+
+                    //如果偏移量超过gallery宽度得一半
+                    if (Math.abs(dx) > width / 2) {
+                        //处理临界值
+                        if (currentTranX <= 0 && currentTranX > -width * 9) {
+                            if (dx > 0) {//如果向右滑动
+
+                                if (currentTranX < 0) {//如果图片显示不是第一张
+
+                                    currentTranX = currentTranX + width;
+                                } else if (currentTranX > -width * (9 - 1)) {
+
+                                    currentTranX = currentTranX;
+                                }
+                            } else if (dx < 0) {
+                                currentTranX -= 375
+                                move(currentTranX);
+                            }
+                        }
+                        move(currentTranX);
+                    } else {
+                        move(currentTranX);
+                    }
+                    isTouchstart = false;
+                }
+            });
+        }
+    });
+
+</script>
+</body>
+</html>

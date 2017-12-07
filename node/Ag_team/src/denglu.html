@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="libs/animate.min.css">
+    <link rel="stylesheet" href="libs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="sass/beta.css">
+    <link rel="stylesheet" href="libs/css/bootstrap.css">
+</head>
+<style>
+    .backDiv{
+        background-image: url('http://huangxiaomiao.vip9158.com/images/login_bj.jpg');
+        width:100%;
+        height:662px;
+        background-size:100% 100%;
+        background-repeat: no-repeat;
+    }
+    .backDivTwo{
+        width:40%;
+        height:160px;
+        background-image: url('http://huangxiaomiao.vip9158.com/Images/login_zi.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        float:left;
+        margin-left: 13%;
+        margin-top: 350px;
+    }
+    .logoDiv_top{
+        width:35%;
+        background: #fff;
+        border-radius: 10px;
+        padding-top: 20px;
+        position: fixed;
+        right:12%;
+        top:200px;
+
+    }
+    .logoDiv{
+        display: flex;
+        font-size: 25px;
+        line-height: 55px;
+        width:53%;
+        margin: auto;
+    }
+    .aq {
+       display: flex;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .aq span{
+        margin-left: 17%;
+        width:34px;
+        height:34px;
+        background: lightgrey;
+        font-size: 20px;
+        text-align: center;
+        line-height: 34px;
+        color:#fff;
+        border-radius: 5px;
+    }
+    .aq input{
+        width:58%;
+    }
+    .logoDiv_top button{
+        width:61%;
+        margin-left: 20%;
+        margin-bottom: 20px;
+    }
+</style>
+<body ng-app="myapp" ng-controller="bodyDengLu">
+<div ng-show='isshow' class="alert alert-warning alert-dismissible" role="alert" style="width: 47%;position: fixed;right:0;top:0">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Warning!</strong> {{textOne}}
+</div>
+        <div class="backDiv">
+                <div class="backDivTwo"></div>
+            <form>
+                <div class="logoDiv_top">
+                    <div class="logoDiv">
+                        <span><img src="http://huangxiaomiao.vip9158.com/Images/login_logo.png" alt=""></span>
+                        <span>huangxiaomiao</span>
+                    </div>
+                    <div class="col-lg-12 aq"><span class="glyphicon glyphicon-user"></span><input ng-model="dengluz" class="input form-control" type="text"  required ></div>
+                    <div class="col-lg-12 aq"><span class="glyphicon glyphicon-download-alt"></span><input ng-model="denglum" class="input form-control" type="password"  required ></div>
+                    <div class="col-lg-12 aq"><span class="glyphicon glyphicon-lock"></span><input ng-model="dengluy" class="input form-control" type="text"  required style="width:30%;" >
+                        <div style="height:35px;width:29%;background: grey;font-size: 30px;text-align: center;">{{divtext}}</div>
+                    </div>
+                    <button ng-click="dengLuAdd()" class="btn btn-success">登陆</button>
+                </div>
+            </form>
+        </div>
+
+</body>
+<script src="libs/jquery-3.2.1.min.js"></script>
+<script src="libs/angular.js"></script>
+<script src="libs/angular-ui-router.js"></script>
+<script src="libs/angular-css.js"></script>
+<script src="libs/angular-route.js"></script>
+<script src="libs/js/bootstrap.min.js"></script>
+<script>
+
+        let user  = localStorage.getItem('uid');
+        console.log(user);
+        let app= angular.module('myapp',[]);
+        if(user){
+            window.location.href = 'http://localhost:3000/index.html';
+        }
+        app.controller('bodyDengLu',['$scope','$http','$timeout',function ($scope,$http,$timeout) {
+            $scope.ram;
+            $scope.textOne='欢迎光临纳克商家联盟管理系统！';
+            $scope.isshow=false;
+            $scope.obj={
+                username:'qq718121',
+                password:'oooo0000'
+            };
+            $scope.ran=function (max,min) {
+                return Number.parseInt(Math.random()*(max-min))+min;
+        };
+            $scope.ram=$scope.ran(9999,1000);
+            $scope.divtext=$scope.ram;
+            $scope.dengLuAdd=function () {
+                console.log($scope.dengluz);
+                if($scope.dengluy==$scope.divtext){
+                    $http.post('http://localhost:2403/mynames/login', {   username:$scope.dengluz,
+                        password:$scope.denglum}, {
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
+                        transformRequest: function (data) {
+                            return $.param(data);
+                        }
+                    }).then(function (res) {
+                        console.log(res);
+//                        window.open('http://localhost:3000/index.html');
+                        localStorage.setItem(
+                            'username',$scope.dengluz
+                        );
+                        localStorage.setItem(
+                        'uid',res.data.uid
+                        );
+                        localStorage.setItem(
+                        'password',$scope.denglum
+                        );
+                        window.location.href = 'http://localhost:3000/index.html';
+                    }, function (err) {
+                        $scope.isshow=true;
+                        $scope.textOne='您输入的账号与密码不匹配';
+                        let times=$timeout(function(){
+                            $scope.isshow=false;
+                        },2000);
+                        clearInterval(times);
+                    })
+                }else{
+                    $scope.textOne='请输入验证码';
+                    $scope.ram=$scope.ran(9999,1000);
+                    $scope.divtext=$scope.ram;
+                }
+
+            }
+
+        }]);
+</script>
+</html>

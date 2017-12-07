@@ -1,0 +1,22 @@
+{
+  "name": "java_script_stady",
+  "version": "1.0.0",
+  "main": "h5/index.js",
+  "scripts": {
+    "start": "node h5/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "_localdb@0.2.12@localdb": "^0.2.12",
+    "localdb": "^0.2.12",
+    "sass": "^1.0.0-beta.3",
+    "ws": "^3.3.2"
+  },
+  "devDependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  },
+  "description": ""
+}

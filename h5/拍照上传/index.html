@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<style>
+    html {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    / / 取消按键的效果
+    }
+
+    .row {
+        margin: 20px 0
+    }
+
+    .file {
+        position: relative;
+        background: #D0EEFF;
+        color: #1E88C7;
+        border: 1px solid #99D3F5;
+        border-radius: 4px;
+        padding: 4px 12px;
+        text-decoration: none;
+        overflow: hidden;
+    }
+
+    .file:hover {
+        background: #AADFFD;
+        border-color: #78C3F3;
+        color: #004974;
+    }
+
+    .file input {
+        position: absolute;
+        left: 0px;
+        top: 0;
+        opacity: 0;
+    }
+
+    .image {
+        display: none;
+        width: 300px;
+        height: 300px;
+        margin-top: 20px;
+    }
+</style>
+<body>
+<div class="row">
+    <!--为了对浏览器默认的按钮进行美化样式，所以在a标签进行样式美化之后设置Input为不显示-->
+    <a href="javascript:void (0)" class="file">
+        <input type="file" id="photo">上传照片
+    </a>
+</div>
+<div class="row">
+    进度：<span id="progress">N/A</span>
+</div>
+<div class="row">
+    预览:<br/> <img src="" class="image" alt="N/A">
+</div>
+<script src="../../jquery-3.2.1.min.js"></script>
+<script>
+    //获取图片预览的元素
+    let image = document.querySelector('img');
+    //获取进度条元素
+    let progress = document.querySelector('#progress');
+    //获取文件上传input
+    let input = document.querySelector('#photo');
+    //响应文件上传事件
+    input.onchange = function (e) {
+        //判断是否哦选择了文件，如果没有就返回
+        let files = this.files;
+        if (files.length == 0) {
+            return;
+        };
+
+        //获取选中上传的文件
+        let file = files[0];
+        //开始上传
+        uploadFile(file);
+        //执行预览文件
+        readAsDataURL(file, image);
+    };
+
+    function readAsDataURL(file, image) {
+        //FileReader 是用来读取文件为data URL 格式
+        let reader = new FileReader();
+        //将文件读取为data url格式
+        reader.readAsDataURL(file);
+        console.log(reader);
+        //文件读取完毕的事件
+        reader.onload = function (e) {
+            //设置预览图片
+            image.src = this.result;
+        }
+        image.style.display = 'block';
+    };
+    var xhrOnProgress = function (fun) {
+        xhrOnProgress.onprogress = fun; //绑定监听
+        //使用闭包实现监听绑
+        return function () {
+            //通过$.ajaxSettings.xhr();获得XMLHttpRequest对象
+            var xhr = $.ajaxSettings.xhr();
+            //判断监听函数是否为函数
+            if (typeof xhrOnProgress.onprogress !== 'function')
+                return xhr;
+            //如果有监听函数并且xhr对象支持绑定时就把监听函数绑定上去
+            if (xhrOnProgress.onprogress && xhr.upload) {
+                xhr.upload.onprogress = xhrOnProgress.onprogress;
+            }
+            return xhr;
+        }
+    };
+    function uploadFile(file) {
+        //构建formData
+        let formData = new FormData();
+        //将文件添加到formdata
+        formData.append(file.name, file);
+        console.log(formData);
+        //用ajax来进行上传并且实现上传进度
+        $.ajax({
+            url: 'http://127.0.0.1:3000/upload',
+            type: 'POST',
+            data: formData,
+            //让浏览器设置请求头
+            contentType: false,
+            //不要序列化上传
+            processData: false,
+            //发送前触发的事件
+            xhr: xhrOnProgress(function (e) {
+                //计算上传的百分比
+                let percent = Math.floor(e.loaded / e.total * 100);
+                //显示百分比
+                progress.innerText = percent + '%';
+            }),
+//            beforeSend: function (xhr) {
+//
+//                //注册上传进度事件
+////                console.log(xhr);
+////                xhr.upload.onprogress = function (e) {
+////                    //计算上传的百分比
+////                    let percent = Math.floor(e.loaded / e.total *100);
+////                    //显示百分比
+////                    progress.innerText = percent+ '%';
+////                }
+//            },
+            success: function (resp) {
+                //成功的话显示上传成功
+//                progress.innerText = '上传成功';
+            },
+            error: function () {
+                progress.innerText = '上传失败';
+            }
+        });
+    }
+</script>
+</body>
+</html>

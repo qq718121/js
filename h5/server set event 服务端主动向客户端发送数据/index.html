@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--******** CSS **********-->
+<style>
+
+</style>
+<!--******** BODY **********-->
+
+<!--******** JS **********-->
+<script>
+    try {
+        //创建EventSource 对象可以连接服务器
+        let sorce = new EventSource('http://192.168.10.116:8080/h5/index.php');
+
+        //监听服务器是否发送数据
+        sorce.addEventListener('message',function (evt) {
+            //如果服务器发送数据就能拿到
+           console.log(evt.data);
+        }, false);
+
+        //监听连接是否打开
+        sorce.addEventListener('open',function (evt) {
+
+        }, false);
+
+        //监听连接是否错误
+        sorce.addEventListener('error',function (evt) {
+            if(evt.target.readyState === EventSource.CLOSED){
+                //关闭连接
+                sorce.close();
+            } else {
+                console.log('链接关闭了；未知错误');
+            }
+        }, false);
+
+    }
+    catch (e){
+        console.log(e);
+    }
+
+</script>
+</body>
+</html>

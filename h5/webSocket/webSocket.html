@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--******** CSS **********-->
+<style>
+
+</style>
+<!--******** BODY **********-->
+
+<!--******** JS **********-->
+<script>
+    try {
+        //用法与server set event 类似  可以替代ajax技术 并且比ajax技术更加强大
+        //WebSocket 对象可以连接服务器
+        let Socket = new WebSocket('http://192.168.10.116:8080/h5/index.php');
+
+        //监听服务器是否发送数据
+        Socket.addEventListener('message',function (evt) {
+            //如果服务器发送数据就能拿到
+            console.log(evt.data);
+        }, false);
+
+        //监听连接是否打开
+        Socket.addEventListener('open',function (evt) {
+
+        }, false);
+
+        //监听连接是否错误
+        Socket.addEventListener('error',function (evt) {
+
+        }, false);
+
+    }
+    catch (e){
+        console.log(e);
+    }
+
+</script>
+</body>
+</html>

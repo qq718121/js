@@ -1,0 +1,16 @@
+.true{
+    width:100px;
+    height:100px;
+    border-radius: 100px;
+    background: green;
+}
+.text{
+    display: flex;
+    margin: 20px;
+}
+.text div{
+    width:200px;
+    height:200px;
+    border:2px dashed #000;
+    flex: 0.2;
+}

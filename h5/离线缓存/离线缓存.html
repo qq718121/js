@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" manifest=".appcache">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <textarea id = 'content' cols="100" rows = '20'></textarea>
+</div>
+</body>
+<!--避免页面失去响应 async 实现异步加载但是IE不支持所以可以兼容处理为 defer -->
+<script src="../../require.js" defer async="true" data-main = 'index.js'></script>
+</html>

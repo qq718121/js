@@ -1,0 +1,122 @@
+
+<div class="hone_div">
+    <div class="home_topText">
+        <div class="home_topText_con">
+            <span>{{huanyin}}</span>
+            <span>{{zhuye}}</span>
+        </div>
+        <div class="r" style="display: flex;justify-content: space-between" >
+            <div class="home_xiaoshouDiv">
+                <nav class="shangzhou">
+                    <span class="{{spanImg1}}"></span>
+                    <i>
+                        <p style="font-size:25px">{{bianhuaNum1}}</p>
+                        <p>{{zongxiao1}}</p>
+                    </i>
+                </nav>
+                <p style="display: flex; justify-content: space-between; margin-top: 10px;margin-bottom: 20px;padding-left: 20px;padding-right: 20px"><i>{{shangzhou1}}</i><i>{{numOne}}</i></p>
+            </div>
+            <div class="home_xiaoshouDiv">
+                <nav class="shangzhou">
+                    <span class="{{spanImg2}}"></span>
+                    <i>
+                        <p style="font-size:25px">{{bianhuaNum2}}</p>
+                        <p>{{zongxiao2}}</p>
+                    </i>
+                </nav>
+                <p style="display: flex; justify-content: space-between; margin-top: 10px;margin-bottom: 20px;padding-left: 20px;padding-right: 20px"><i>{{shangzhou2}}</i><i>{{numOne}}</i></p>
+            </div>
+            <div class="home_xiaoshouDiv">
+                <nav class="shangzhou">
+                    <span class="{{spanImg3}}"></span>
+                    <i>
+                        <p style="font-size:25px">{{bianhuaNum3}}</p>
+                        <p>{{zongxiao3}}</p>
+                    </i>
+                </nav>
+                <p style="display: flex; justify-content: space-between; margin-top: 10px;margin-bottom: 20px;padding-left: 20px;padding-right: 20px"><i>{{shangzhou3}}</i><i>{{numOne}}</i></p>
+            </div>
+            <div class="home_xiaoshouDiv">
+                <nav class="shangzhou">
+                    <span class="{{spanImg4}}"></span>
+                    <i>
+                        <p style="font-size:25px">{{bianhuaNum4}}</p>
+                        <p>{{zongxiao4}}</p>
+                    </i>
+                </nav>
+                <p style="display: flex; justify-content: space-between; margin-top: 10px;margin-bottom: 20px;padding-left: 20px;padding-right: 20px"><i>{{shangzhou4}}</i><i>{{numOne}}</i></p>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between">
+            <div class="fanLiLeft">
+                <div class="fanLiLeiJi">
+                    <p>{{fanlileiji}}</p>
+                    <p>{{leiji}}</p>
+                </div>
+                <p style="display: flex;justify-content: space-around;margin-top:40px"><span class="glyphicon glyphicon-sound-stereo"></span>
+                    <span>代理商数量</span>
+                    <span>7</span>
+                </p>
+                <p style="display: flex;justify-content: space-around;margin-top:40px"><span class="glyphicon glyphicon-list-alt"></span>
+                    <span>商家数量</span>
+                    <span>10</span>
+                </p>
+                <p style="display: flex;justify-content: space-around;margin-top:40px"><span class="glyphicon glyphicon-envelope"></span>
+                    <span>短信数量</span>
+                    <span>0</span>
+                </p>
+            </div>
+
+            <div class="jinZangRight" ng-hide="xiaosouHinde">
+                <div class="jinZangRight_top">
+                    <span style="font-size:17px; color:grey; font-weight: 500">销售额和现金进账</span>
+                    <span>
+                        <a href="" ng-click="optionss()"><span style="padding:7px;color:grey" class="glyphicon glyphicon-refresh"></span></a>
+                        <a href="" ng-click="xiaosouoClose()"><span style="padding:7px;color:grey" class="glyphicon glyphicon-minus"></span></a>
+                        <a href=""  ng-click="xiaosouosuoxiao()"><span style="padding:7px;color:grey" class="glyphicon glyphicon-remove" ></span></a>
+                    </span>
+                </div>
+                <pck ng-hide="xiaosouxiao"></pck>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-between">
+            <div class="jinZangYuanZuo" ng-repeat="obj in arr"  ng-hide="xiaosouHinde1">
+                    <h4>会员充值综合支付方式</h4>
+                    <span style="float:right;">
+                        <a href=""><span style="color:grey" class="glyphicon glyphicon-refresh"></span></a>
+                        <a href="" ng-click="xiaosouoClose1()"><span style="color:grey" class="glyphicon glyphicon-minus"></span></a>
+                        <a href=""  ng-click="xiaosouosuoxiao1()"><span style="color:grey" class="glyphicon glyphicon-remove"></span></a>
+                    </span>
+                <div class="yuan"  ng-hide="xiaosouHinde1">
+                    <div class="zhenyuan"  ng-hide="xiaosouxiao1" >
+                        <div class="moban">
+                            <ul>
+                                <li ng-repeat="boj in zhifu">
+                                    <i style="float:left; margin-top: 3px; display:inline-block;width:15px;height:15px"></i>
+                                    <span>{{boj}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="jinZangYuanRight"   ng-hide="xiaosouHinde2">
+                <div class="jinZangRight_top">
+                    <span style="font-size:13px; color:grey; font-weight: 500">综合支付方式（本周）</span>
+                    <span>
+                        <a href="" ng-click="optionss2()"><span style="padding:7px;" class="glyphicon glyphicon-refresh"></span></a>
+                        <a href="" ng-click="xiaosouoClose2()"><span style="padding:7px;" class="glyphicon glyphicon-minus"></span></a>
+                        <a href=""  ng-click="xiaosouosuoxiao2()"><span style="padding:7px;" class="glyphicon glyphicon-remove"></span></a>
+                    </span>
+                </div>
+                <carts  ng-hide="xiaosouxiao2"></carts>
+            </div>
+        </div>
+        <footer class="nakeRoute_home_footer">
+            <span>2016 © 纳客软件.</span>
+        </footer>
+    </div>
+</div>
+
+

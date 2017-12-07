@@ -1,0 +1,164 @@
+.nakeStore_fixed_top{
+    width:100%;
+    height:75px;
+    line-height: 75px;
+    background:rgba(0,200,100,0.8);
+    display: flex;
+    position: fixed;
+    z-index: 999;
+}
+.nakeStore_fixed_top_logo{
+    height:75px;
+    width:19%;
+}
+.nakeStore_fixed_top_logo span{
+    color:#fff;
+    font-weight: 600;
+    font-size:16px;
+}
+.icon-bars{
+    width:30px;
+    height:40px;
+    background: red;
+
+}
+.fixed_top_huadong{
+    margin-left: 20px;
+    width:40px;
+    height:50px;
+    font-size: 160%;
+    color:#fff;
+    line-height: 75px;
+}
+.fixed_top_huadong:hover{
+    color:#fff;
+    text-decoration: none;
+
+}
+.fixed_top_huadong:active{
+    color:#fff;
+    text-decoration: none;
+}
+.fixed_top_huadong:visited{
+    color:#fff;
+    text-decoration: none;
+}
+.s{
+    margin-left: 63%;
+}
+.s a{
+    color:#fff;
+    font-size: 170%;
+
+}
+.ss{
+    margin-left: 5%;
+}
+.ss a{
+   width:50px;
+    height:50px;
+
+}
+.nakeStore_fixed_top a:nth-child(4) span{
+   font-size: 30px;
+    color:#fff;
+    margin-top: 17px;
+}
+.fixed_top_xiaoxi{
+    width:20px;
+    height:20px;
+    background:red;
+    z-index:99;
+    position: absolute;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 16px;
+    color:#fff;
+    font-size: 14px;
+    left:14px;
+    top:-10px;
+}
+
+
+.nakeRoute_con{
+    color:darkgray;
+    /*position: absolute;*/
+    float:left;
+    margin-top:75px;
+    width:21%;
+    border-right:2px solid gainsboro;
+    overflow: scroll;
+    height:585px;
+}
+.nakeRoute_con p{
+    margin-left:30px;
+    margin-top: 6px;
+    margin-bottom: 20px;
+
+}
+.nakeRoute_con a:link{
+    color:rgba(0,0,0,0.5);
+}
+.nakeRoute_con a:hover{
+    color:rgba(0,200,100,0.8);
+}
+.nakeRoute_con a:active{
+    color:rgba(0,200,100,0.8);
+}
+.nakeRoute_con a:visited{
+    color:rgba(0,0,0,0.5);
+}
+.nakeView_con{
+    float:left;
+    margin-top: 75px;
+   /*color:red;*/
+    width:79%;
+}
+#accordion a{
+   display: inline-block;
+    width:100%;
+    height:40px;
+    text-decoration: none;
+    font-weight:700;
+    background: #fff;
+}
+#accordion a:nth-child(1) span{
+    margin:10px 15px;
+    text-align: right;
+}
+#accordion a span:nth-child(3){
+    float:right;
+}
+.panel-default>.panel-heading {
+    background-color: #fff;
+}
+.nakeRoute_main_con{
+    width:100%;
+    /*position: fixed;*/
+    float:left;
+    margin-top:75px;
+    margin-bottom:0;
+}
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    border-radius: 50px;
+    margin-top:-8px;
+}
+.dropdown-menu{
+    left:-200px;
+}
+.u li a{
+    display: flex;
+    justify-content: space-around;
+}
+.mengbanOne{
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999999;
+    position: absolute;
+    top:0;
+}

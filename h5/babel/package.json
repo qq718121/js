@@ -1,0 +1,12 @@
+{
+  "name": "babel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "babel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"babel babel.js --out-file babel-compiled.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

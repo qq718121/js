@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--******** CSS **********-->
+<style>
+    
+</style>
+<!--******** BODY **********-->
+<body>
+    <article>
+            <button onclick="click_handler()">点击</button>
+    </article>
+
+<!--******** JS **********-->
+<script>
+    let click_handler = function () {
+
+//        ;(function () {
+            let message = ['1','2','3','4','5','6'];
+            //随机的获取数据，真是环境是从服务器获取数据
+            let getMessage = function () {
+                let index = Math.floor(Math.random()*10);
+                return message[index] || null;
+            };
+//            let postMessageLoop = function () {
+//                let randomTime = 1000;
+//                setTimeout(function () {
+
+                  if(getMessage()!==null){
+                      const a = window.open('http://192.168.10.116:5000/h5/postMessage/get.html',"Map", "status=0,title=0,height=600,width=800,scrollbars=1");
+
+                      a.onload = function(e){
+                          a.postMessage(getMessage(),'http://192.168.10.116:5000');
+                     }
+                  }
+//                    postMessageLoop();
+//                }, randomTime)
+//            };
+//            postMessageLoop();
+//        }());
+    };
+</script>
+</body>
+</html>

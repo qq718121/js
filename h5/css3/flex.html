@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script>
+        window.onerror = function(errorMessage, scriptURI, lineNumber,columnNumber,errorObj) {
+            console.log("错误信息：" , errorMessage);
+            console.log("出错文件：" , scriptURI);
+            console.log("出错行号：" , lineNumber);
+            console.log("出错列号：" , columnNumber);
+            console.log("错误详情：" , errorObj);
+        }
+    </script>
+</head>
+<style>
+    footer {
+        border-top: 1px solid #0f0f0f;
+        border-bottom: 1px solid #0f0f0f;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        padding-top: 5px;
+    }
+
+    footer a {
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        color: grey;
+    }
+
+    footer a p {
+        margin: 0;
+        font-size: 10px;
+    }
+
+    .icon-home {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        background: indianred;
+    }
+</style>
+<body>
+<footer>
+    <a href="#"><span class="icon-home"></span>
+        <p>首页</p></a>
+    <a href="#"><span class="icon-home"></span>
+        <p>物流</p></a>
+    <a href="#"><span class="icon-home"></span>
+        <p>购物车</p></a>
+    <a href="#"><span class="icon-home"></span>
+        <p>我的</p></a>
+    <a href="#"><span class="icon-home"></span>
+        <p>更多</p></a>
+</footer>
+</body>
+<!--<script type="text/javascript" src="//doitbegin.duapp.com/error.js"  crossorigin></script>-->
+
+</html>

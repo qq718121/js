@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas class = 'pie-chart' width = '850' height="500"></canvas>
+</body>
+<script type = 'text/javascript' src = '../../jquery.js'></script>
+<script>
+    //创建一个构造函数 初始化参数
+        let PieChart = function (selector,options) {
+           //创建canvas画布
+            let canvas = 'string' === typeof selector ? document.querySelector(selector) : null;
+            if(canvas === null) return false;
+            //初始化图例css属性
+            let defaultOptopons = {
+                radius : 200,
+                legendParms:{
+                    font:'24px Aeial',
+                    x:30,
+                    y:30,
+                    margin:50,
+                    width:50,
+                    height:24
+                }
+            };
+            //获得画布
+            this.context = canvas.getContext('2d');
+            //width 等于画布的宽
+            this.width = canvas.getAttribute('width');
+            //height 等于画布的高
+            this.height = canvas.getAttribute('height');
+            //合并两个参数
+            this.options = Object.assign(defaultOptopons,options);
+        };
+        //如果每一项的值已经有了那么就让他加上新的值 否则赋值 return data
+        PieChart.prototype.load = function (data) {
+            data.forEach(item => this.count ? this.count += item.value : this.count =item.value);
+            this.data = data;
+            console.log(this);
+            return this;
+        };
+        //进行绘制
+        PieChart.prototype.render = function () {
+            let _generateLegend = (item,index) => {
+                console.log(item,index);
+                this.context.fillRect(
+                    this.options.legendParms.x,
+                    this.options.legendParms.y + index * this.options.legendParms.margin,
+                    this.options.legendParms.width,
+                    this.options.legendParms.height
+                );
+                this.context.font = this.options.legendParms.font;
+                this.context.fillText(
+                    item.title,
+                    this.options.legendParms.y + this.options.legendParms.margin,
+                    (index+1) * this.options.legendParms.margin
+                );
+            };
+            let temparc = 0;
+            this.data.forEach((item,index) => {
+                console.log(item,index);
+                item.color = `#${('00000'+(Math.random()*0X1000000<<0).toString(16)).substr(-6)}`;
+                this.context.beginPath();
+                this.context.moveTo(this.width / 2,this.height / 2);
+                let startarc = temparc,endarc = startarc + (item.value / this.count) * Math.PI * 2;
+                this.context.arc(this.width / 2,
+                this.height / 2,
+                this.options.radius,
+                startarc,
+                    endarc,
+                    false
+                );
+                this.context.closePath();
+                this.context.fillStyle = item.color;
+                this.context.fill();
+                temparc = endarc;
+                if(this.options.legend){
+                    _generateLegend(item,index);
+                }
+            });
+            return this;
+        };
+        const data = [
+            {title:'沪江网校',value:1024},
+            {title:'方式网校',value:1064},
+            {title:'结婚网校',value:324},
+            {title:'额头网校',value:1324}
+        ];
+        let pie = new PieChart('.pie-chart',{legend:true})
+        pie.load(data).render();
+</script>
+</html>

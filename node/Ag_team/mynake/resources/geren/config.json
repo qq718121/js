@@ -1,0 +1,61 @@
+{
+	"type": "Collection",
+	"properties": {
+		"kahao": {
+			"name": "kahao",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "kahao",
+			"order": 0
+		},
+		"xingmin": {
+			"name": "xingmin",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "xingmin",
+			"order": 1
+		},
+		"mima": {
+			"name": "mima",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "mima",
+			"order": 2
+		},
+		"shoujihao": {
+			"name": "shoujihao",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "shoujihao",
+			"order": 3
+		},
+		"dengji": {
+			"name": "dengji",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "dengji",
+			"order": 4
+		},
+		"youxiaoqi": {
+			"name": "youxiaoqi",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "youxiaoqi",
+			"order": 5
+		},
+		"yue": {
+			"name": "yue",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "yue",
+			"order": 6
+		}
+	}
+}

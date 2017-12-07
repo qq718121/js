@@ -1,0 +1,23 @@
+.xiugaiBody{
+    background: #f5f5f5;
+    height:505px;
+}
+.xiugaiBody_top{
+    display: flex;
+    justify-content: space-between;
+    padding:20px 25px 20px 25px;
+}
+.xiugaimima div{
+    display: flex;
+    line-height: 50px;
+}
+.xiugaimima span{
+    width:20%;
+    text-align: right;
+    margin-right: 20px;
+}
+.xiugaimima input{
+    width:50%;
+    margin-top: 10px;
+    /*text-align: right;*/
+}

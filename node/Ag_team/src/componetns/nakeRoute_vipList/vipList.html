@@ -1,0 +1,83 @@
+<!--<div class="jumbotron">-->
+    <!--<div class="container">-->
+        <!--...-->
+    <!--</div>-->
+<!--</div>-->
+
+<script type="text/ng-template" id="myModelContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">模态框</h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li ng-repeat="item in items">
+                <a ng-click="selected.item = item">{{item}}</a>
+            </li>
+            <div class="h2">当前选择： <b>{{selected.item}}</b></div>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">
+            确认
+        </button>
+        <button class="btn btn-warning" ng-click="cancel()">退出</button>
+    </div>
+</script>
+<div ng-show="isshowd" class=" alert alert-warning alert-dismissible" role="alert" style="width: 57%;z-index:999999999;position: fixed;right:20%;top:0">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="false">&times;</span></button>
+    <strong>Warning!</strong> {{textThere}}
+</div>
+<div class="vipListBody">
+    <div class="vipListBody_top">
+        <span style="font-size: 20px;font-weight: 500">会员列表</span>
+        <span><a href="#">首页</a> / 会员列表</span>
+    </div>
+    <div class="vipListBody_inner">
+        <div class="vipListBody_inner_btn">
+            <a href="#/vipLv"><button class="btn btn-success">新增<span class="glyphicon glyphicon-plus"></span></button></a>
+            <button class="btn btn-danger"  ng-click="open()">高级查询<span class="glyphicon glyphicon-search"></span></button>
+            <button class="btn btn-primary" ng-click="liebiaoshuaxin()">刷新<span class="glyphicon glyphicon-log-in"></span></button>
+            <button class="btn btn-warning" ng-click="open('lg')">批量发送优惠券<span class="glyphicon glyphicon-send"></span></button>
+        </div>
+        <div class="inners">
+            <div style="display: flex;justify-content: space-between;color:grey;font-size: 16px;padding:40px 15px 40px 15px">
+                <div><span>每页显示 <select ng-model="xialanum" ng-options="a for a in selects"  ng-init="xialanum=selects[0]" class="input input-sm" style="display: inline-block">
+                <option value="10" selected ng-bind="a" ></option>
+            </select></span><span> 条记录 </span></div>
+                <div>
+                    <span> 搜索 </span>
+                    <input ng-model='dataArr.data.xingmin' type="text" class="input-group;display: inline-block">
+                </div>
+            </div>
+            <table class="table table-hover table-striped table-condensed dataib">
+                <tr class="tab-content">
+                    <td>会员卡号</td>
+                    <td>会员姓名</td>
+                    <td>会员等级</td>
+                    <td>手机号码</td>
+                    <td>密码</td>
+                    <td>新增日期</td>
+                    <td>余额</td>
+                    <td>操作</td>
+                </tr>
+                <tr class="tab-content" ng-repeat="arrnum in dataArr | filter:dataArr.data.xingmin">
+                    <td ng-repeat="objvip in arrnum">{{objvip}}</td>
+                    <td>
+                       <button class="btn btn-primary" ng-click="opens($index)">修改</button>
+                        <button class="btn btn-danger" ng-click="remove($index)">删除</button>
+                    </td>
+                </tr>
+            </table>
+            <div style="display: flex;justify-content: space-between;padding:20px 10px 20px 10px">
+                <span>当前显示共<span>{{nums}}</span>条记录</span>
+                <span>
+                <button class="btn btn-danger" ng-click="Previous()">上一页</button>
+                <button class="btn btn-danger " ng-click="Next()">下一页</button>
+            </span>
+            </div>
+        </div>
+    </div>
+    <div style="padding:20px 20px 20px 20px;background: #f3f3f3;width:79%;position: absolute;bottom:0">
+        <span style="color:grey;">2016 © 纳客软件.</span>
+    </div>
+</div>

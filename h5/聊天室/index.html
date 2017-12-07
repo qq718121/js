@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+
+<style>
+    .chat {
+        width: 100vw;
+        height: 100vw;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        float: left;
+    }
+</style>
+<body>
+<div class="row">
+    您的昵称：<span class="name"></span>
+</div>
+<div class="row">
+    聊天记录:
+    <div class="chat">
+
+    </div>
+</div>
+<div class="row">
+    <input type="text" class="typed-message"/>
+    <input type="button" value="发送消息" class="send-message"/>
+</div>
+
+<script src="../../jquery-3.2.1.min.js"></script>
+<script>
+
+    let ws = new WebSocket('ws://localhost:3002');//创建websocket服务
+    let uid; //最新可分配得游客ID
+    let $nickname = $('.name'); //获取昵称元素
+    let $chat = $('.chat');//获取聊天记录元素
+    let typedMessage = $('.typed-message');//获取输入消息得元素
+    ws.onmessage = function (event) { //当websocket 收到消息时
+        let message = JSON.parse(event.data);//反序列化消息
+        if (message.type === 'assign') { //进入聊天室分配ID
+            uid = message.uid;     //保存分配的ID
+            $nickname.text('游客' + uid); //显示昵称
+        } else if (message.type === 'welcome') {
+            //显示消息
+            let welcome = '<span class="user">系统消息:</span><div class="message">欢迎游客' + message.uid + '</div>';
+            $chat.append(welcome);
+        } else if (message.type === 'leave') {//退出
+            let leave = '<span class="user">系统消息:</span><div class="message">欢迎游客' + message.uid + '退出聊天室</div>';
+            //显示消息
+            $chat.append(leave);
+        } else if (message.type === 'message') {//退出
+            let messages = '<span class="user">游客' + message.uid + '说:</span><div class="message">' + message.message + '</div>';
+            //显示消息
+            $chat.append(messages);
+        }
+    };
+    $('.send-message').click(function () {//发送消息
+
+        let message = typedMessage.val();//获取用户输入的消息
+        if (message === '') {
+            return;
+        }
+        ws.send(JSON.stringify(
+            {
+                uid: uid,
+                message: message
+            }
+        ));
+        typedMessage.val('');
+    });
+</script>
+</body>
+</html>

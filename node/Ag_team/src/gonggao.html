@@ -1,0 +1,45 @@
+<div ng-show="isshowdg" class=" alert alert-success alert-dismissible" role="alert" style="width: 57%;z-index:999999999;position: fixed;right:20%;top:0">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="false">&times;</span></button>
+    <strong>Warning!</strong> {{textThereg}}
+</div>
+<div class="gonggaoBody">
+    <div class="gonggaoBody_top">
+        <span style="font-size: 20px;font-weight: 500">公告列表</span>
+        <span><a href="#">首页</a> / 公告列表</span>
+    </div>
+    <div class="inners">
+        <div style="display: flex;justify-content: space-between;color:grey;font-size: 16px;padding:40px 15px 40px 15px">
+            <div><span>每页显示 <select ng-model="electgg" ng-change="haha()" ng-options="g for g in elects" ng-init="electgg=elects[0]" class="input input-sm" style="display: inline-block">
+                <option ng-bind="g" selected="selected"></option>
+            </select></span><span> 条记录 </span></div>
+            <div>
+                <span> 搜索 </span>
+                <input type="text" ng-model="dataArrs.biaoti"  class="input-group;display: inline-block" >
+            </div>
+        </div>
+        <table class="table table-hover g">
+            <tr class="tab-content">
+                <td>标题</td>
+                <td>创建时间</td>
+                <td>状态</td>
+                <td>操作</td>
+            </tr>
+            <tr class="table table-striped active " ng-repeat="tr in dataArrs | filter:dataArrs.biaoti">
+                <td ng-repeat="g in tr ">{{g}}</td>
+                <td>
+                    <button class="btn btn-danger" ng-click="removes($index)">删除</button>
+                </td>
+            </tr>
+        </table>
+        <div style="display: flex;justify-content: space-between;padding:20px 10px 20px 10px">
+            <span>当前显示，共<span>{{numss}}</span>条记录</span>
+            <span>
+                <button class="btn btn-danger " ng-click="Previousg()">上一页</button>
+                <button class="btn btn-danger "  ng-click="Nextg()">下一页</button>
+            </span>
+        </div>
+    </div>
+    <div style="padding:20px 20px 20px 20px;background: #f3f3f3;width:79%;position: absolute;bottom:0">
+        <span style="color:grey;">2016 © 纳客软件.</span>
+    </div>
+</div>

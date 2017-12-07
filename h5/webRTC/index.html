@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--******** CSS **********-->
+<style>
+
+</style>
+<body>
+<!--******** BODY **********-->
+
+//显示摄像头的源视频
+<video id="source" src="" autoplay muted></video>
+//显示已经录制的视频
+<video id="recorded" src="" autoplay loop></video>
+<div><button id="record" disabled>开始录制</button></div>
+
+<!--******** JS **********-->
+<!-- 提供哥哥浏览器WEBRTC相关API 一致性的适配器-->
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

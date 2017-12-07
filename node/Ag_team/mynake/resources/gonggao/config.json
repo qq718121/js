@@ -1,0 +1,29 @@
+{
+	"type": "Collection",
+	"properties": {
+		"biaoti": {
+			"name": "biaoti",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "biaoti",
+			"order": 0
+		},
+		"chuanjian": {
+			"name": "chuanjian",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "chuanjian",
+			"order": 1
+		},
+		"zhuangtai": {
+			"name": "zhuangtai",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "zhuangtai",
+			"order": 2
+		}
+	}
+}

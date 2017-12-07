@@ -1,0 +1,72 @@
+
+<div class="gerenBody">
+
+    <div class="gerenBody_top">
+        <span style="font-size: 20px;font-weight: 500">用户个人资料</span>
+        <span><a href="#">首页</a> / 用户个人资料</span>
+    </div>
+    <div>
+        <div style="background:#f1f1f1;width:100%;height:50px;padding:15px">
+            <span style="color:grey;font-size: 15px">基础资料</span>
+        </div>
+    </div>
+        <div class="inners">
+            <ul>
+                <li>
+                    <div class="col-lg-6">
+                        <span> 账号： </span><input type="text" placeholder="{{usernames}}" disabled class="form-control">
+                    </div>
+                    <div  class="col-lg-6">
+                        <span> 姓名： </span><input ng-model="xingming" type="text"  placeholder="{{name}}" class="form-control">
+                    </div>
+                </li>
+                <li>
+                    <div class="col-lg-6">
+                        <span> 手机号码： </span><input ng-model="shouji" type="text" class="form-control" placeholder="{{phoneName}}">
+                    </div>
+                    <div  class="col-lg-6">
+                        <span> 联系电话： </span><input ng-model="dianhua" type="text"  class="form-control">
+                    </div>
+                </li>
+                <li class="form-group">
+                    <div class="col-lg-6">
+                        <span > 角色： </span><input type="text" placeholder="超级管理员" disabled class="form-control">
+                    </div>
+                    <div class="col-lg-6" style="visibility: hidden">
+                        <span > 角色： </span><input type="text" placeholder="超级管理员" disabled class="form-control">
+                    </div>
+                </li>
+                <li class="form-group">
+                    <div class="col-lg-6" >
+                        <span> 联系地址： </span><input ng-model="dizhi" type="text"class="form-control">
+                    </div>
+
+                    <div class="col-lg-6" style="visibility: hidden">
+                        <span > 角色： </span><input type="text" placeholder="超级管理员" disabled class="form-control">
+                    </div>
+                </li>
+            </ul>
+            <div style="display: flex;margin-left: 12.5%">
+                <span>上传头像：</span>
+                <div style="position: relative; width:100px;height:100px;background-image:url('images/2.jpg');background-size:100%;background-repeat: no-repeat">
+                    <a href="" style="float:right;"><span class="glyphicon glyphicon-remove"></span></a>
+                    <input type="file" value="1" style="
+                    width:100px;
+                    height:100px;
+                    background: red;
+                   opacity: 0;
+                ">
+                </div>
+            </div>
+            <div style="margin-left: 19%;margin-top: 20px; background:pink;padding-top:15px;padding-bottom:15px;width:80%"><span style="color:rgba(150,100,0,0.9)">最佳尺寸36*36像素</span></div>
+            <div style="display: flex;margin-left: 15%;margin-top: 30px" >
+                <span> 备注： </span>
+                <textarea ng-model="text"  name="" id="" cols="80" rows="8">{{text}}</textarea>
+            </div>
+            <button class="btn btn-success" style="margin-left: 16%;margin-top: 10px" ng-click="baocun()">保存</button>
+        </div>
+
+    <div style="padding:20px 20px 20px 20px;background: #f3f3f3;width:79%;position: absolute;bottom:0">
+        <span style="color:grey;">2016 © 纳客软件.</span>
+    </div>
+</div>

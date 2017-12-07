@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>高德地图行走记录</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+</head>
+<body>
+<div id="container" style="width:300px;height:300px;"></div>
+<header style="position: absolute;top:300px;">
+    <button onclick="btnStart()">开始记录</button>
+    <button onclick="btnStop()">停止记录</button>
+</header>
+<script src="http://webapi.amap.com/maps?v=1.4.1&key=ce1f9e9c72ed15ab2e572cff2b7ef2c4&callback=init"></script>
+<script>
+    //下面这段代码是把http替换成https
+//    var targetProtocol = "https:";
+//    if (window.location.protocol != targetProtocol)
+//        window.location.href = targetProtocol +
+//            window.location.href.substring(window.location.protocol.length);
+    let geoOptions = {
+        enableHighAccuracy: true,
+        timeout: 3000,
+        maximumAge: 0
+    };
+    function init() {
+        var map = new AMap.Map('container', {
+            center: [121.600000, 31.220000],
+            zoom: 10
+        });
+        map.plugin(["AMap.ToolBar"], function () {
+            map.addControl(new AMap.ToolBar());
+        });
+    };
+    function success(options) {
+        console.log(options.coords)
+    };
+    function error(error) {
+        switch (error) {
+            case 0:
+                alert("尝试获取您的位置发生错误" + error.message);
+                break;
+            case 1:
+                alert("用户拒绝了获取位置的请求" + error.message);
+                break;
+            case 2:
+                alert("浏览器无法获取您的位置" + error.message);
+                break;
+            case 3:
+                alert("超时" + error.message);
+                break;
+        }
+    };
+    function callback(coords) {
+        coords = convert(coords.longitude, coords.latitude);//转换地理坐标  因为高德用的是火星坐标无法使用gps获取的地球坐标
+        //一句坐标生成搞得地图点对象
+        let startPoint = new AMap.LngLat(coords.longitude, coords.latitude);
+        map.setCenter(startPoint); //设置地图的中心点
+        map.setZoom(16);//设置放大显示
+    };
+    function getPosition(callback) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error, geoOptions);
+        }
+    };
+    getPosition(callback);
+    function btnStart() {
+
+        timmer = navigator.geolocation.watchPosition((position) => {
+
+            let coords = position.coords;
+            if (coords.accuracy > 20) {
+                return;
+            }
+            coords = convert(coords.longitude, coords.latitude);//转换地理坐标
+            //调用方法在地图上面画轨迹
+            map.setCenter(new AMap.LngLat(coords.longitude, coords.latitude));
+            lineArr.push([coords.longitude, coords.latitude]);
+            renderTracer(getPath(lineArr));
+        }, (error) => {
+            console.log(error)
+        }, geoOptions)
+    };
+    function btnStop() {
+
+    };
+</script>
+</body>
+</html>

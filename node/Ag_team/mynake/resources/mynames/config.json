@@ -1,0 +1,45 @@
+{
+	"type": "UserCollection",
+	"properties": {
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "name",
+			"order": 0
+		},
+		"phoneName": {
+			"name": "phoneName",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "phoneName",
+			"order": 1
+		},
+		"text": {
+			"name": "text",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "text",
+			"order": 2
+		},
+		"addr": {
+			"name": "addr",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "addr",
+			"order": 3
+		},
+		"tell": {
+			"name": "tell",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "tell",
+			"order": 4
+		}
+	}
+}
