@@ -582,7 +582,7 @@
     </option>
     <option name="HTML_ATTRIBUTE_NAME">
       <value>
-        <option name="FOREGROUND" value="ffd5bc" />
+        <option name="FOREGROUND" value="f9cae6" />
       </value>
     </option>
     <option name="HTML_ATTRIBUTE_VALUE">
@@ -733,7 +733,7 @@
     </option>
     <option name="JS.INSTANCE_MEMBER_VARIABLE">
       <value>
-        <option name="FOREGROUND" value="fdedfb" />
+        <option name="FOREGROUND" value="70b186" />
         <option name="FONT_TYPE" value="1" />
       </value>
     </option>
@@ -752,7 +752,8 @@
     </option>
     <option name="JS.LOCAL_VARIABLE">
       <value>
-        <option name="FOREGROUND" value="f90a53" />
+        <option name="FOREGROUND" value="70b186" />
+        <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="JS.OPERATION_SIGN">
