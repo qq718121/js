@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<style>
+    .page {
+        height: 500px;
+        -webkit-overflow-scrolling: touch;
+        background: green;
+    }
+
+    .page_two {
+        width: 100px;
+        height: 100px;
+        background: yellow;
+        position: absolute;
+        top: 0;
+        left: -100px;
+        display: none;
+    }
+
+    .page > div {
+        background: red;
+        height: 100vh;
+    }
+
+    .enter {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        animation: slideIn .5s forwards;
+    }
+
+    .enters {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -100px;
+        right: 0;
+        z-index: 1;
+        animation: slideIn .5s forwards;
+    }
+
+    -webkit-@keyframes forwards {
+        from {
+            transform: translate3d(-100px, 0, 0);
+            opacity: 0;
+        }
+        to {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+    }
+
+</style>
+<body>
+<div class="pages">
+    <div class="page page-home">
+        <a href="#/start">去游戏开始</a>
+    </div>
+    <div class="page_two page-start">
+        <a href="#/">去主页</a>
+    </div>
+</div>
+<script>
+    let Router = function () {
+        this._routes = [];
+        this._get = function (hash) {
+            let router = this._routes.filter(function (item) {
+                return '#' + item.url === hash;
+            });
+            return router[0] || {};
+        }.bind(this);
+    };
+    Router.prototype.push = function (route) {
+        this._routes.push(route);
+        return this;
+    };
+    Router.prototype.init = function () {
+        this.go(this._get(location.hash));
+        window.addEventListener('hashchange', function () {
+            this.go(this._get(location.hash));
+        }.bind(this), false);
+        return this;
+    };
+    Router.prototype.go = function (page) {
+        let enter_page = document.querySelector(page.selector);
+        if (!enter_page) {
+            return false;
+        }
+        ;
+        for (let i in enter_page.classList) {
+            if (i == 'enter') {
+                enter_page.classList.add('enters');
+            } else {
+                enter_page.classList.add('enter');
+            }
+        }
+
+        if (page.hasOwnProperty('handle')) {
+            page.handle.call(this);
+        }
+        ;
+    };
+    let home_page = {
+        url: '/',
+        selector: '.page-home',
+        handle: function () {
+            console.log('home page enter.')
+        }
+    };
+    let start_page = {
+        url: '/start',
+        selector: '.page-start',
+        handle: function () {
+            console.log('start page enter.')
+        }
+    };
+    let r = new Router();
+    r.push(home_page).push(start_page).init();
+</script>
+</body>
+</html>

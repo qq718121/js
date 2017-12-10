@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    /*<!--固定狂傲可以采用绝对定位来剧中-->*/
+    /*.parent {*/
+    /*width: 960px;*/
+    /*height: 480px;*/
+    /*background: red;*/
+    /*position: relative;*/
+    /*}*/
+
+    /*.chirden {*/
+    /*width: 480px;*/
+    /*height: 240px;*/
+    /*background: green;*/
+    /*position: absolute;*/
+    /*left:50%;*/
+    /*top:50%;*/
+    /*margin-left: -240px;*/
+    /*margin-top: -120px;*/
+    /*}*/
+
+    /*自适应剧中*/
+    /*.parent {*/
+        /*height: 480px;*/
+        /*background: red;*/
+        /*!*position: relative;*!*/
+        /*display: table;*/
+    /*}*/
+
+    /*.chirden {*/
+        /*width: 480px;*/
+        /*!*height: 240px;*!*/
+        /*background: green;*/
+        /*!*position: absolute;*!*/
+        /*!*left: 50%;*!*/
+        /*!*top: 50%;*!*/
+        /*!*transform: translate(-50%,-50%);*!*/
+        /*vertical-align: middle;*/
+        /*display: table-cell;*/
+    /*}*/
+
+    /*display实现垂直居中*/
+    .parent {
+        height: 480px;
+        background: red;
+        display: flex;
+
+    }
+
+    .chirden {
+
+        width: 480px;
+        height: 240px;
+        background: green;
+        align-self: flex-end;
+        margin: auto;
+        /*margin: auto;*/
+
+    }
+    /*固定宽高多行文本垂直居中*/
+</style>
+<body>
+<article class="parent">
+    <nav class="chirden">
+        我是子元素 我是子元素 我是子元素 我gergergerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素 我是子元素
+    </nav>
+</article>
+<script>
+
+</script>
+</body>
+</html>
