@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var pipe = (function () {
+        return function (value) {
+            var funcStack = [];
+            var oproxy = new Proxy({}, {
+                get: function (pipeObject, fnName) {
+                    funcStack.push(window[fnName]);
+                    if (fnName === 'reverseInt') {
+                        return funcStack.reduce(function (val, fn) {
+                            return fn(val);
+                        }, value);
+                    }
+                    return oproxy;
+                }
+            });
+            return oproxy;
+        }
+    }());
+
+    var double = n => n * 2;
+    var pow = n => n * n;
+    var reverseInt = n => n.toString().split("").reverse().join("") | 0;
+//        console.log(pipe(3).double.pow.reverseInt); //63
+
+//set
+    let obj = {_age:3};
+    let init = function (key,action) {
+        if(key[0] == '_'){
+            throw '不润许'
+        }
+    };
+    let handle = {
+        get(target,key,proxy){
+            init(key,'get');
+            return target[key]
+        },
+        set(target,key,value,proxy){
+                if(typeof value !== 'number'){
+                    throw '类型'
+                }
+                if(value > 200){
+                    throw '大了'
+                }
+                target[key] = value;
+        }
+    };
+    let PROXY_obj = new Proxy(obj,handle);
+    PROXY_obj._age = 200;
+    console.log(PROXY_obj._age);
+
+</script>
+</body>
+</html>

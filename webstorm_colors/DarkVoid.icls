@@ -716,8 +716,8 @@
     </option>
     <option name="JS.GLOBAL_FUNCTION">
       <value>
-        <option name="FOREGROUND" value="fbfde0" />
-        <option name="FONT_TYPE" value="2" />
+        <option name="FOREGROUND" value="f9aab8" />
+        <option name="FONT_TYPE" value="3" />
       </value>
     </option>
     <option name="JS.GLOBAL_VARIABLE">
@@ -733,13 +733,13 @@
     </option>
     <option name="JS.INSTANCE_MEMBER_VARIABLE">
       <value>
-        <option name="FOREGROUND" value="70b186" />
+        <option name="FOREGROUND" value="a28eff" />
         <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="JS.KEYWORD">
       <value>
-        <option name="FOREGROUND" value="7fb5ff" />
+        <option name="FOREGROUND" value="f90153" />
         <option name="FONT_TYPE" value="1" />
       </value>
     </option>

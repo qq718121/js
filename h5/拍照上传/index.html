@@ -74,10 +74,12 @@
         let files = this.files;
         if (files.length == 0) {
             return;
-        };
+        }
+        ;
 
         //获取选中上传的文件
         let file = files[0];
+        console.log(file);
         //开始上传
         uploadFile(file);
         //执行预览文件
@@ -118,7 +120,7 @@
         let formData = new FormData();
         //将文件添加到formdata
         formData.append(file.name, file);
-        console.log(formData);
+
         //用ajax来进行上传并且实现上传进度
         $.ajax({
             url: 'http://127.0.0.1:3000/upload',
