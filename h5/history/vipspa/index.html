@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul style="width: 100px;float: left">
+    <li><a href="#/sy">首页</a></li>
+    <li><a href="#/one">页面一</a></li>
+    <li><a href="#/two">页面2</a></li>
+    <li><a href="#/three">页面3</a></li>
+    <li><a href="#/four">页面4</a></li>
+</ul>
+<div style="width: 590px;height:400px;border:1px solid blue" id="content"></div>
+<script src="../../../jquery-3.2.1.min.js"></script>
+<script src="vipspa.js"></script>
+<script>
+    vipspa.start({
+        view: '#content',// 页面路由的div
+        router: {
+            '/sy': {
+                templateUrl: 'v1.html',
+                controller: 'v1.js'
+            },
+            '/one': {
+                templateUrl: 'v2.html',
+                controller: 'v2.js'
+            },
+            '/two': {
+                templateUrl: 'v3.html',
+                controller: 'v3.js'
+            },
+            '/three': {
+                templateUrl: 'v4.html',
+                controller: 'v4.js'
+            },
+            'defaults': '/sy'
+        },
+        errorTemplateId: '#error'//错误显示页面
+    });
+    alert('2');
+</script>
+</body>
+</html>
