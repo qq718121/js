@@ -13,7 +13,7 @@ Assemblage.prototype.fun_two = function () {
 
 function Sub() {
     Assemblage.call(this);
-};
+}
 Sub.prototype = new Assemblage();
 let sub_one = new Sub();
 let sub_two = new Sub();

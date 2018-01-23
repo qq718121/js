@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if语句与for语句</title>
+</head>
+<body>
+<script>
+    /*
+     * if语句是js种一个非常灵活的语句，常用来进行判断，如果表达式结果返回是true的话，会执行相应的代码
+     * 一下三种写法都是合理的，第一种是规范的代码块写法，
+     * 第二种属于一种简写方法，如果判断语句后面的表达式只有一行的话，可以省略花括号，但是不推荐这种写法
+     * js规定，无论什么情况下都不建议去掉花括号，既要保证代码的可阅读性也要避免代码混乱
+     * 最后一个是三元一次表达式，是规范的判断赋值写法
+     */
+    if (true) {
+        console.log('1');
+    } else {
+        console.log('0');
+    }
+    if (true) console.log('1') else console.log('0');
+    let a = true ? '1' : '0'
+    /*
+     * 循环语句
+     * do-while循环语句是每次缓缓之前都要先执行一次do代码块里面的代码
+     *如果把do去掉，单留一个while语句，是淡出你得执行循环语句，与夏敏的for循环语句是没有任何区别的
+     * for in 语句是用来遍历对象的所有可美剧的属性，直到所有的属性都遍历一遍，但是对象的属性是没有顺序排列的，
+     * 所以遍历的顺序是不能保证的，根据浏览器来决定
+     */
+    let i = 0;
+    do {
+        i += 2;
+    } while (i < 10)
+    {
+        i++;
+    }
+    ;
+    var f = 0;
+    while (f < 10) {
+        f++;
+    }
+    for (let i = 0; i < 10; i++) {
+        console.log(i);
+    }
+    for (let i in obj) {
+        console.log(i);
+    }
+    /*
+     * break 和 continue label
+     *首先下面是两个for循环代码块，为每个代码块定义了一个label标签 a 用来配合 break 和 continue 使用
+     * break 是直接跳出循环，强制执行循环下面的代码，下面代码返回45 也就是说当i执行到5的时候不会立即跳出，而是等到j页执行到
+     * 5才会跳出，所以num加了45次
+     * continue 也是直接跳出当前循环，但是会继续从下一次循环继续，下面代码跟上面一样，执行到都等于5的时候跳出，
+     * num加了45次，但是继续从6开始循环，因为5已经跳过了 ，所以后面执行完毕之后也就是95次，
+     */
+    let num = 0;
+    a:
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+                if (i == 5 && j == 5) {
+                    break a;
+                }
+                num++;
+            }
+        }
+    a:
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+                if (i == 5 && j == 5) {
+                    continue a;
+                }
+                num++;
+            }
+        }
+</script>
+</body>
+</html>

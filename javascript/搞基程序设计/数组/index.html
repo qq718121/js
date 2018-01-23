@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //检测数组
+    //可以使用instanceof 来检测某个对象是不是数组
+    //eg
+    let obj = [];
+    if (obj instanceof Array) {
+        alert('1');
+    }
+    //这个方法的不足是，他假设只有一个全局环境。如果有多个全局环境的话，在每个全局环境下都有一个不通于憋得全局环境的构造函数
+    //ES5新增了isArray 方法，他的目的就是用来判断这个对象是不是数组，
+    let obj1 = [];
+    if (Array.isArray(obj1)) {
+        alert(1);
+    }
+    console.log(Array.isArray(obj1));
+    //转换方法
+    let arr = [1, 2, 3, 4, 5];
+    console.log(arr.toString());//返回数组的每一个元素用逗号串联的字符串
+    console.log(arr.toLocaleString());//大部分情况下返回于另外两种方法相同的值
+    console.log(arr.valueOf());//返回数组形式
+    //栈方法
+    //栈方法来操作数组，他的操作规则是后进先出，LIOF意思就是最后提娜佳进来的先出去
+    let arrz = new Array();
+    arrz.push(1, 2);
+    console.log(arrz);
+    arrz.pop();
+    console.log(arrz);//[1]
+    //队列方法
+    //队列方法的操作规则是先进先出FIFO，先进来的先出去
+    let arrd = new Array();
+    arrd.push(1, 2);
+    arrd.shift();
+    console.log(arrd);//[2]
+    //date 类型
+    let date = new Date('6/13/2004');
+    console.log(date);
+    let date_utc = new Date(Date.UTC(2000, 0));
+    console.log(date_utc);
+    //取得开始时间
+    var start = +new Date();
+    //调用函数
+    function doSomething() {
+        console.log('1');
+    }
+    doSomething();
+    //取得停止时间
+    var stop = +new Date(),
+        result = stop - start;
+    console.log(stop);
+    console.time('1');
+
+</script>
+</body>
+</html>

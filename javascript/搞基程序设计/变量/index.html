@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //首先javascript中的变量是松散类型，用来保存一个值
+    let str = 'hi';
+    //在es6语法中使用let 来替换var，可以避免用var而产生的问题，例如变量提升，变量污染等
+    str = 100;
+    //优于javascript中的变量是松散定义 ，所以支持直接给变量声明赋值；上面代码在javascript中是生效的，但是不建议直接修改变量的数据类型
+    let num = 0;
+    num = 100;
+    //上面这种写法是允许的
+    function ftn() {
+        let b = 2;
+        return (function () {
+            return b;
+        })();
+    }
+//    console.log(b);//undefind
+    //上面代码在函数的局部作用域馁声明一个变量，函数执行完毕之后变量会被销毁，之后再访问是访问不到的
+    //如果把let 去掉，当函数执行的时候b就被保存到了全局，之后在任何地方访问都可以访问到的
+    //但是不建议直接定义全局变量，首先会导致变量的混乱不容易维护，
+    let nan_obj = {age:'1'};
+    console.log(isNaN(nan_obj.age));
+    //上述代码返回false 首先js会调用valueof 如果不能的话会调用tostring 来拿到字符串并且转换成数值，
+    //如果返回true的话，则该值不能被转换成数值，也不是可以换算的对象，例如‘blue’,nan
+    let obj = new Object();
+    let ftns = new Function();
+    let arr = new Array();
+    function Dev() {
+
+    }
+    Dev.prototype.ftn = function () {
+
+    };
+    let dev = new Dev();
+    let sum = ftn();
+    ++sum;
+    console.log(sum);
+</script>
+</body>
+</html>

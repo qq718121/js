@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .img_slice {
+        width: 200px;
+        height: 100px;
+        overflow: hidden;
+        margin: 50px auto;
+    }
+
+    .img_slice img {
+        width: 100%;
+        /*height: 200px;*/
+        /*margin-left: calc((200px - 300px) / 2);*/
+        /*margin-top: calc((100px - 200px) / 2);*/
+    }
+
+    .transfrom_big {
+        animation: big_ 3s;
+    }
+
+    @keyframes big_ {
+        from {
+            /*-webkit-transform: scale(0, 0);*/
+            /*-moz-transform: scale(0, 0);*/
+            /*-transform: scale(0, 0);*/
+            width: 200px;
+            height: 100px;
+        }
+        to {
+            /*-webkit-transform: scale(1.5, 1.5);*/
+            /*-moz-transform: scale(1.5, 1.5);*/
+            /*-transform: scale(1.5, 1.5);*/
+            width: 300px;
+            height: 200px;
+        }
+    }
+
+
+</style>
+<body>
+<article>
+    <section>
+        <div class="img_slice">
+            <img src="../images/pic_share@3x.png" alt="">
+        </div>
+    </section>
+    <section>
+        <div>
+            <p>这是一段代码</p>
+            <pre>
+                <code>
+                     let div = document.querySelector('.img_slice');
+                        div.onclick = function (e) {
+                        if (!e) e = e || window.event;
+                        e.preventDefault();
+                        if (!div) {
+                            return;
+                        }
+                        div.classList.add('transfrom_big')
+                        console.log(div.classList);
+                        }
+                </code>
+            </pre>
+        </div>
+    </section>
+</article>
+<script>
+    let div = document.querySelector('.img_slice');
+    div.onclick = function (e) {
+        if (!e) e = e || window.event;
+        e.preventDefault();
+        if (!div) {
+            return;
+        }
+        div.classList.add('transfrom_big')
+        console.log(div.classList);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //js的数据类型一共有六种，string,number,boolean,undefined,null,Object
+    //null == undefind 是true 因为undefinde 是由null衍生出来的
+    //    undefined 只有一个变量声明之后但是并未赋值，会隐式的取值为undefined ，也可以显示的赋值
+    let a = undefined;
+    //但是这样做并没有什么意义，还有一种情况就是一个未声明的变量的值也是undefined，可以利用这种情况来banding如果变量未
+    // undefined 那么就可以断定这个变量没有被声明，前提是要养成声明变量并且随手赋予null值的习惯，声明一个变量之后，如果没有
+    //为这个变量赋值的打算，最好是赋予null 空对象；因为 typeof null //object
+    let t = true;
+    let f = false;
+    //上面代码中的两个值是boolean值类型这种类型的数据只有两个值，true,false，但是true 并不一定等于1 false并不一定等于0
+    //boolean的值最常用的就是创建一个开关，例如一个dom元素的显示或者隐藏
+    //其他的任何数据类型都可以显示的转换为boolean值，例如：
+    let str = Boolean('haha');
+    let sun = Boolean(3);
+    let obj = Boolean({name: 'pck'});
+    //以上三行代码都是显示的将另外三种数据类型转换为boolean类型，详细的转换规则javascript有说明，
+    //例如str 部位''的字符串转换为true , ''字符串转换那位false ， 其他同理number：0或者NAN是false,null是false,undefined是false
+    //    if (str) {
+    //        alert('true');
+    //    }
+    //上面代码str会被自动的转换成boolean类型进行判断，所以明确的知道要判断的变量是什么值很重要，
+    let number_one = 0.1;
+    let number_two = 0.2;
+    console.log(number_one + number_two);
+    //上面代码是两个浮点数类型的运算，由于通用运算规则的通病，这样的运算得到的结果是0.300000004，这是由于舍入错误导致的
+    //所以日常开发种应该尽量的避免这样的运算，或者使用极小值来进行判断，Number.MIN_VALUE或者es6里面的一个判断是否为极小值
+
+    //数组是js种常用得引用类型，可以有序得储存任何数据类型得值，当然也可以嵌套储存数组，主要有一下两种创建方式
+    let arr = new Array(4294967295);
+    console.log(arr);
+    let arr2= [];
+    /*
+    * 上面第一种是new一个Array构造函数得实例，继承Array构造函数原型链上面得所有方法
+    * 后面跟得参数是数组得储存上限，超出这个上限就会报错
+    * 第二种是字面量得创建
+    */
+    arr.length = 100;
+    arr[100] = 100;
+    arr.length = 2;
+    /*
+    * 上面是一些数组得操作，第一个是让数组得长度为100，可以动态得增加啊数组得内容，当然中间得都是undefined
+    * 第二种方式是为数组得100索引位置赋值
+    * 可以通过减少数组得长度来删除数组得最后一项
+    */
+</script>
+</body>
+</html>
