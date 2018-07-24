@@ -1,54 +1,62 @@
-function observe(data) {
-    if (!data || typeof data !== 'object') {
-        return;
-    }
-    // 取出所有属性遍历
+// import Dep from "./Dep";
 
-    Object.keys(data).forEach(function (key) {
-        defineReactive(data, key, data[key]);
+// class Observer {
+//   constructor(data) {
+//     // 获取所有属性数据
+//     this.data = data;
+
+//     // 为所有属性数据添加get/sete的属性监听
+//     Object.keys(this.data).forEach(key => {
+//       this._bind(data, key, data[key]);
+//     });
+//   }
+//   _bind(data, key, val) {
+//     var myDep = new Dep();
+//     Object.defineProperty(data, key, {
+//       get() {
+//         // 如果是为订阅的对象，则添订阅
+//         if (Dep.target) myDep.listen(Dep.target);
+//         return val;
+//       },
+//       set(newValue) {
+//         if (newValue === val) return;
+//         val = newValue;
+//         // 如果数值改变，则发布更新
+//         myDep.notify();
+//       }
+//     });
+//   }
+// }
+
+// export default Observer;
+
+let Observer = function (data) {
+    this.data = data;
+
+    this.obInit(this.data);
+}
+Observer.prototype.obInit = function (data) {
+    Object.keys(data).forEach((key) => {
+        this._bind(data, key, data[key]);
     });
 }
 
-function defineReactive(data, key, val) {
+Observer.prototype._bind = function (data, key, value) {
     let dep = new Dep();
-    observe(val); // 监听子属性
     Object.defineProperty(data, key, {
-        enumerable: true, // 可枚举
-        configurable: false, // 不能再define
         get: function () {
-            Dep.target && dep.addDep(Dep.target);
-            console.log(Dep.target);
-            return val;
-        },
-        set: function (newVal) {
-            if (val === newVal) {
-                return
+            if (Dep.target) {
+                console.log(Dep);
+                dep.listen(Dep.target)
             }
-            console.log('哈哈哈，监听到值变化了 ', val, ' --> ', newVal);
-            val = newVal;
-            dep.notify(); // 通知所有订阅者
-            console.log(dep.notify);
+            return value;
+        },
+        set: function (val) {
+            if (val === value) {
+                return;
+            }
+            value = val;
+            dep.notify();
         }
-    })
+    });
 }
-function Dep() {
-    this.subs = [];
-}
-Dep.prototype = {
-    addSub: function (sub) {
-        this.subs.push(sub);
-    },
-    notify: function () {
-        this.subs.forEach((sub) => {
-            sub.update();
-        })
-    }
-};
-let data = {
-    name: 'kindeng',
-    age: 18
-};
-observe(data);
-data.age = 2; // 哈哈哈，监听到值变化了 kindeng --> dmq
-console.log(data.age);
-

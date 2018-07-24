@@ -19,7 +19,7 @@ function Sub(like) {
     fun.call(this, 12);
     this.like = like;
 };
-let sub_one = new Sub('操逼');
+let sub_one = new Sub('操');
 let sub_two = new Sub('操');
 sub_one.arr.push(2);
 console.log(sub_one.fun_one());

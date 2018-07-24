@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>手机摇一摇</title>
 </head>
+
 <body>
 
 </body>
 <script>
-        let SHAKE_SPEED_THRESHOLD = 300;<!--摇动速度嚄值-->
-        let lastTime = 0; <!--上次变化的时间-->
-        let x = y =z =lastX = lastY = lastZ = 0;<!--位置初始化-->
-        function motionHandler(evt) {
-            <!--取得包含中立加速的位置信息-->
-            let accelleration = evt.accelerationIncludingGravity;
-            let curTime = Date.now();<!--取得当前的时间-->
-            if((curTime - lastTime) > 120){
-                let dissTime = curTime - lastTime;<!--获得时间差-->
-                lastTime = curTime;<!--保存这一次变化的时间-->
-                x = accelleration.x;
-                y = accelleration.y;
-                z = accelleration.z;
-                <!--计算摇动速度-->
-                let speed = Math.abs(x+y+z-lastX-lastY-lastZ)/dissTime*1000;
-                if(speed > SHAKE_SPEED_THRESHOLD){
-                    alert("你摇动了手机");
-                }
-                lastX = x;
-                lastY = y;
-                lastZ = z;
-                <!--保存这次变化的位置-->
+    // <!--摇动速度嚄值-->
+    let SHAKE_SPEED_THRESHOLD = 300;
+    // <!--上次变化的时间-->
+    let lastTime = 0;
+    // <!--上次变化的时间-->
+    let x = y = z = lastX = lastY = lastZ = 0;
+
+    function motionHandler(evt) {
+        // <!--取得包含中立加速的位置信息-->
+        let accelleration = evt.accelerationIncludingGravity;
+        // <!--上次变化的时间-->
+        let curTime = Date.now();
+        if ((curTime - lastTime) > 120) {
+            // <!--上次变化的时间-->
+            let dissTime = curTime - lastTime;
+            // <!--上次变化的时间-->
+            lastTime = curTime;
+            x = accelleration.x;
+            y = accelleration.y;
+            z = accelleration.z;
+            // <!--计算摇动速度-->
+            let speed = Math.abs(x + y + z - lastX - lastY - lastZ) / dissTime * 1000;
+            if (speed > SHAKE_SPEED_THRESHOLD) {
+                alert("你摇动了手机");
             }
+            lastX = x;
+            lastY = y;
+            lastZ = z;
+            // <!--保存这次变化的位置-->
         }
-        <!--判断是否支持位置感应-->
-        if(window.DeviceMotionEvent){
-            <!--添加移动事件-->
-            window.addEventListener('devicemotion',motionHandler,false);
-        }else{
-            alert('您的手机不支持位置感应');
-        }
+    }
+    // <!--判断是否支持位置感应-->
+    if (window.DeviceMotionEvent) {
+        // <!--添加移动事件-->
+        window.addEventListener('devicemotion', motionHandler, false);
+    } else {
+        alert('您的手机不支持位置感应');
+    }
 </script>
+
 </html>
